@@ -32,8 +32,12 @@ struct NotesView: View {
     }
     // MARK: - Persistence
     // Add your code here
-    
-    
+    .onAppear{
+        try! viewModel.load()
+    }
+    .onChange(of: viewModel.notes){_ in
+        try! viewModel.save()
+    }
     
     
     
